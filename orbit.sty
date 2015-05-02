@@ -1,0 +1,158 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{orbit}
+\usepackage{fixltx2e}%  http://ctan.org/pkg/fixltx2e
+%%%%%%
+% Font related packages:
+\usepackage[utf8]{inputenx}%  http://ctan.org/pkg/inputenx
+% Euler for math | Palatino for rm | Helvetica for ss | Courier for tt
+\renewcommand{\rmdefault}{ppl}% rm
+\linespread{1.05}% Palatino needs more leading
+\usepackage[scaled]{helvet}% ss //  http://ctan.org/pkg/helvet
+\usepackage{courier}% tt // http://ctan.org/pkg/courier
+\usepackage{eulervm}  %  http://ctan.org/pkg/eulervm
+% a better implementation of the euler package (not in gwTeX)
+\normalfont%
+\usepackage[T1]{fontenc}%  http://ctan.org/pkg/fontenc
+\usepackage{textcomp}%  http://ctan.org/pkg/textcomp
+%%%%%%
+
+\usepackage{standalone}%
+\usepackage[table]{xcolor}%
+\usepackage{mathtools}%
+\usepackage{amsthm}%
+\usepackage{amssymb}%
+\usepackage{mathabx}%
+\usepackage[most]{tcolorbox}%
+\tcbuselibrary{theorems}%
+%\tcbset{shield externalize}%
+\usepackage{eucal}%
+\usepackage{enumitem}%
+\usepackage{tocloft}%
+\usepackage{chngcntr}%
+\usepackage{multirow}%
+\usepackage[framemethod = tikz]{mdframed}%
+\usepackage{tabu}%
+\usepackage{graphicx}%
+\usepackage{capt-of}%
+\usepackage[stretch = 10, verbose = silent, protrusion = 0]{microtype}%
+% http://ctan.org/pkg/microtype
+
+%%%%% 
+% captioning and referencing
+\usepackage{subcaption}%  http://ctan.org/pkg/subcaption
+\captionsetup[subfigure]{labelformat = parens, labelsep = space, font = small}
+%
+\usepackage[pdfencoding = auto, psdextra, bookmarksdepth = 4]{hyperref}%
+% http://ctan.org/pkg/hypperref
+%\usepackage[margin = 0.5in]{geometry}%  http://ctan.org/pkg/geometry
+% Equation numbering
+% Same idea using the package chngcntr
+\counterwithin{figure}{section}%
+\counterwithin{table}{section}%
+\counterwithin{equation}{section}%
+% Equations are number inside (and reset at) section
+\usepackage[noabbrev]{cleveref}%  http://ctan.org/pkg/cleveref
+% adding examples to cleverref
+\usepackage[all]{hypcap}%  http://ctan.org/pkg/hypcap
+%%%%%
+%  suppressing badness warnings that aren't to severe
+\vbadness = 2000
+\hbadness = 2000
+%
+%  hyperref settings
+\newcommand\myshade{100}
+\colorlet{mylinkcolor}{violet}
+\colorlet{mycitecolor}{YellowOrange}
+\colorlet{myurlcolor}{Aquamarine}
+
+\hypersetup{
+  linkcolor  = mylinkcolor!\myshade!black,
+  citecolor  = mycitecolor!\myshade!black,
+  urlcolor   = myurlcolor!\myshade!black,
+  colorlinks = true,
+}
+%%%%% 
+
+% Allows equation taggin in any math enviroment
+
+\newcommand{\eqnumtag}{%
+  % step the counter and make it lable-able
+  \refstepcounter{equation}%
+  % print the counter as tag
+  \tag{\theequation}%
+}
+%
+
+% spacing for differentials in integrals
+\newcommand{\ud}{\, \mathrm{d}}%
+
+%%%%%
+% Enivornments
+% Definition set up
+\newtheoremstyle{defi}%
+{\topsep}%
+{\topsep}%
+{\normalfont}%
+{}%
+{\bfseries}%
+{:}%
+{.5em}%
+{\thmname{#1}\thmnote{~(#3)}}%
+\theoremstyle{defi}%
+\newmdtheoremenv[%
+roundcorner = 5pt,%
+innertopmargin = 0pt,%
+innerbottommargin = 5pt,%
+linewidth = 4pt,%
+linecolor = gray!40!black,%
+]{definition}{Definition}%
+% 
+% Examples set up
+%\makeatletter%
+\def\tcb@theo@title#1#2#3{%
+  \ifdefempty{#2}{\setbox\z@=\hbox{#1}}{\setbox\z@ = \hbox{#1~#2}}%
+  \def\temp@a{#3}%
+  \ifx\temp@a\@empty\relax%
+  \unhbox\z@:%
+  \else%
+  \setbox\z@ = \hbox{\unhbox\z@\ }%
+  \hangindent\wd\z@%
+  \hangafter = 1%
+  \mbox{\unhbox\z@}#3:%
+  \fi%
+}%
+%\makeatother%
+\newcounter{exa}%
+\tcbmaketheorem{examples}{Example Problem}{%
+  breakable,%
+  colback = gray!10,%
+  fonttitle = \bfseries,%
+}{exa}{ex}%
+% 
+% mdframed setup laws and key theorems
+\newmdenv[%
+backgroundcolor = blue!30,%
+roundcorner = 5pt,%
+nobreak,%
+linewidth = 2pt,%
+linecolor = blue!40!black,%
+]{lw}%
+\newenvironment{laws}[1]%
+{\begin{lw}[frametitle = #1]}%
+  {\end{lw}}%
+% ----------------------------------%
+% 
+% mdframed key questions
+\newmdenv[%
+roundcorner = 5pt,%
+nobreak,%
+linewidth = 1pt,%
+linecolor = red,%
+]{qs}%
+\newenvironment{questions}[1]%
+{\begin{qs}}%
+  {\end{qs}}%
+% 
+
+%  Allow display breaks
+\allowdisplaybreaks
