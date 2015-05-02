@@ -1,0 +1,266 @@
+\chapter{Restricted 3-Body Problem}
+\label{restricted-3-body}
+
+\begin{figure}
+  \centering
+  \includestandalone[mode = image]{restricted3bodydiagram}
+  \caption[3 Body Diagram]{Diagram of the restricted 3 body problem.}
+  \label{restricted3bodydiagram}
+\end{figure}
+\begin{alignat*}{4} 
+  r_{12} & = \sqrt{(x_1 - x_2)^2} & \qquad & x_1
+  &&{}= \text{Is the } x \text{ location of } m_1\\
+  x_2 & = x_1 + r_{12} & & &&{}\phantom{=}
+  \text{relative to the center of gravity.}\\
+  x_1 & = \frac{-m_2}{m_1 + m_2}r_{12} & & \pi_1 &&{}=
+  \frac{m_1}{m_1 + m_2}\\
+  x_2 & = \frac{m_1}{m_1 + m_2}r_{12} & & \pi_2 &&{}=
+  \frac{m_2}{m_1 + m_2}\\
+  0 & = m_1x_1 + m_2x_2
+\end{alignat*}
+We can describe the position of \(m\) as
+\(\mathbf{r} = x\hat{\mathbf{i}} + y\hat{\mathbf{j}} + z\hat{\mathbf{k}}\) in relation to the center of gravity, i.e., the origin.
+\begin{align} 
+  \mathbf{r}_1
+  & =  (x - x_1)\hat{\mathbf{i}} + y\hat{\mathbf{j}} +
+    z\hat{\mathbf{k}}\notag\\
+  & = (x + \pi_2r_{12})\hat{\mathbf{i}} + y\hat{\mathbf{j}}
+    + z\hat{\mathbf{k}}\label{position1}\\
+  \mathbf{r}_2
+  & =  (x - x_2)\hat{\mathbf{i}} + y\hat{\mathbf{j}} +
+    z\hat{\mathbf{k}}\notag\\
+  & = (x - \pi_1r_{12})\hat{\mathbf{i}} + y\hat{\mathbf{j}}
+    + z\hat{\mathbf{k}}\label{position2}
+\end{align}
+Let's define the absolute acceleration where \(\omega\) is the initial angular
+velocity which is constant.
+Then \(\omega = \frac{2\pi}{T}\).
+\[ 
+\ddot{\mathbf{r}}_{\text{abs}}
+= \mathbf{a}_{\text{rel}} + \mathbf{a}_{\text{CG}}
++ \mathbf{\varOmega}\times(\mathbf{\varOmega}\times\mathbf{r})
++ \dot{\mathbf{\varOmega}}\times\mathbf{r}
++ 2\mathbf{\varOmega}\times\mathbf{v}_{\text{rel}}
+\eqnumtag\label{absacceleration}
+\]
+where
+\begin{alignat*}{4}
+  \mathbf{a}_{\text{rel}}
+  & = \text{Rectilinear acceleration relative to the frame} & \quad &
+  \mathbf{\varOmega}\times(\mathbf{\varOmega}\times\mathbf{r}) &&{}= 
+  \text{Centripetal acceleration}\\
+  2\mathbf{\varOmega}\times\mathbf{v}_{\text{rel}} & =
+  \text{Coriolis acceleration}
+\end{alignat*}
+Since the velocity of the center of gravity is constant,
+\(\mathbf{a}_{\text{CG}} = 0\), and \(\dot{\mathbf{\varOmega}} = 0\) since the
+angular velocity of a circular orbit is constant.
+Therefore, \cref{absacceleration} becomes:
+\[ 
+\ddot{\mathbf{r}} = \mathbf{a}_{\text{rel}}
++ \mathbf{\varOmega}\times(\mathbf{\varOmega}\times\mathbf{r})
++ 2\mathbf{\varOmega}\times\mathbf{v}_{\text{rel}}
+\eqnumtag\label{modabsaccel}
+\]
+where
+\begin{align} 
+  \mathbf{\varOmega} & = \varOmega\hat{\mathbf{k}}\label{omega}\\
+  \mathbf{r} & = x\hat{\mathbf{i}} + y\hat{\mathbf{j}}
+               + z\hat{\mathbf{k}}\label{position}\\
+  \dot{\mathbf{r}} & = \mathbf{v}_{\text{CG}}
+                     + \mathbf{\varOmega}\times\mathbf{r}
+                     + \mathbf{v}_{\text{rel}}\label{velocity}\\
+  \mathbf{v}_{\text{rel}} & = \dot{x}\hat{\mathbf{i}}
+                            + \dot{y}\hat{\mathbf{j}}
+                            + \dot{z}\hat{\mathbf{k}}\label{relvel}\\
+  \mathbf{a}_{\text{rel}} & = \ddot{x}\hat{\mathbf{i}}
+                            + \ddot{y}\hat{\mathbf{j}}
+                            + \ddot{z}\hat{\mathbf{k}}\label{relabsvel}
+\end{align}
+After substituting \cref{omega}, \cref{position}, \cref{relvel}, and
+\cref{relabsvel} into \cref{modabsaccel}, we obtain
+\[
+\ddot{\mathbf{r}} =
+\left(\ddot{x} - 2\varOmega\dot{y} - \varOmega^2x\right)\hat{\mathbf{i}}
++ \left(\ddot{y} + 2\varOmega\dot{x} - \varOmega^2y\right)\hat{\mathbf{j}}
++ \ddot{z}\hat{\mathbf{k}}.
+\eqnumtag\label{simplifiedabsaccel}
+\]
+Newton's \(2^{\text{nd}}\) Law of Motion is
+\(m\mathbf{a} = \mathbf{F}_1 + \mathbf{F}_2\) where
+\(\mathbf{F}_1 = -\frac{Gm_1m}{r_1^3}\mathbf{r}_1\) and
+\(\mathbf{F}_2 = -\frac{Gm_2m}{r_2^3}\mathbf{r}_2\).
+Let \(\mu_1 = Gm_1\) and \(\mu_2 = Gm_2\).
+\begin{align} 
+  m\mathbf{a} & = \mathbf{F}_1 + \mathbf{F}_2 & \notag\\
+  m\mathbf{a} & = -\frac{m\mu_1}{r_1^3}\mathbf{r}_1
+                - \frac{m\mu_2}{r_2^3}\mathbf{r}_2 & \notag\\
+  \mathbf{a} & = -\frac{\mu_1}{r_1^3}\mathbf{r}_1
+               - \frac{\mu_2}{r_2^3}\mathbf{r}_2 & \notag\\
+  \bigl(\ddot{x} - 2\varOmega\dot{y} - \varOmega^2x\bigr)\hat{\mathbf{i}}
+  + \bigl(\ddot{y} + 2\varOmega\dot{x} - \varOmega^2y\bigr)\hat{\mathbf{j}}
+  + \ddot{z}\hat{\mathbf{k}}
+              & = -\frac{\mu_1}{r_1^3}\mathbf{r}_1
+                - \frac{\mu_2}{r_2^3}\mathbf{r}_2 & \notag\\
+  \bigl(\ddot{x} - 2\varOmega\dot{y} - \varOmega^2x\bigr)\hat{\mathbf{i}}
+  + \bigl(\ddot{y} + 2\varOmega\dot{x} - \varOmega^2y\bigr)\hat{\mathbf{j}}
+  + \ddot{z}\hat{\mathbf{k}}
+              & =
+                \begin{aligned}
+                  - & \frac{\mu_1}{r_1^3}\Bigl[(x +
+                  \pi_2r_{12})\hat{\mathbf{i}} + \hat{\mathbf{j}} +
+                  \hat{\mathbf{k}}\Bigr]\\
+                  - & \frac{\mu_2}{r_2^3}\Bigl[(x -
+                  \pi_1r_{12})\hat{\mathbf{i}} + \hat{\mathbf{j}} +
+                  \hat{\mathbf{k}}\Bigr]
+                \end{aligned}\label{absaccelfurthersolved}
+\end{align}
+Now all we have to do is equate the coefficients.
+\begin{align}
+  \ddot{x} - 2\varOmega\dot{y} - \varOmega^2x
+  & = -\frac{\mu_1}{r_1^3}(x + \pi_2r_{12}) - \frac{\mu_2}{r_2^3}(x
+    - \pi_1r_{12})\\
+  \ddot{y} + 2\varOmega\dot{x} - \varOmega^2y
+  & = -\frac{\mu_1}{r_1^3}y - \frac{\mu_2}{r_2^3}y\\
+  \ddot{z}
+  & = -\frac{\mu_1}{r_1^3}z - \frac{\mu_2}{r_2^3}z
+\end{align}
+We now have system of nonlinear ODEs.
+The standard approach is to start by identifying the fixed points (Lagrange
+points).
+The Lagrange points occur when
+\(\dot{x} = \dot{y} = \dot{z} = \ddot{x} = \ddot{y} = \ddot{z} = 0\) which
+brings us to the following system of ODEs.
+\begin{align*}
+  -\varOmega^2x & = -\frac{\mu_1}{r_1^3}(x + \pi_2r_{12}) -
+                   \frac{\mu_2}{r_2^3}(x - \pi_1r_{12})\\
+  -\varOmega^2y & = -\frac{\mu_1}{r_1^3}y - \frac{\mu_2}{r_2^3}y\\
+  0 & = -\frac{\mu_1}{r_1^3}z - \frac{\mu_2}{r_2^3}z
+\end{align*}
+We can clearly see from the last equation that \(z = 0\).
+We can simplify the last two ODEs further by using the relations
+\(\varOmega = \sqrt{\frac{\mu}{r_{12}^3}}\), \(\pi = 1 - \pi_2\),
+\(\pi_1 = \frac{\mu_1}{\mu}\), and \(\pi_2 = \frac{\mu_2}{\mu}\).
+\begin{align}
+  -\frac{\mu}{r_{12}^3}x
+  & = -\frac{\mu_1}{r_1^3}(x + \pi_2r_{12})
+    - \frac{\mu_2}{r_2^3}(x - \pi_1r_{12})\notag\\
+  \frac{x}{r_{12}^3}
+  & = \frac{\mu_1}{\mu}\frac{1}{r_1^3}(x + \pi_2r_{12})
+    + \frac{\mu_2}{\mu}\frac{1}{r_2^3}[x - (1 - \pi_2)r_{12}]\notag\\
+  \frac{x}{r_{12}^3}
+  & = \pi_1\frac{1}{r_1^3}(x + \pi_2r_{12})
+    + \pi_2\frac{1}{r_2^3}[x  - r_{12} + \pi_2r_{12}]\notag\\
+  \frac{x}{r_{12}^3}
+  & = \frac{(1 - \pi_2)}{r_1^3}(x + \pi_2r_{12})
+    + \frac{\pi_2}{r_2^3}[x  - r_{12} + \pi_2r_{12}]\label{xode}\\
+  -\frac{\mu}{r_{12}^3}y
+  & = -\frac{\mu_1}{r_1^3}y - \frac{\mu_2}{r_2^3}y\notag\\
+  \frac{1}{r_{12}^3}
+  & = \frac{\mu_1}{\mu}\frac{1}{r_1^3} +
+    \frac{\mu_2}{\mu}\frac{1}{r_2^3}\notag\\
+  \frac{1}{r_{12}^3}
+  & = \frac{\pi_1}{r_1^3} + \frac{\pi_2}{r_2^3}\notag\\
+  \frac{1}{r_{12}^3}
+  & = \frac{1 - \pi_2}{r_1^3} + \frac{\pi_2}{r_2^3}\label{yode}
+\end{align}
+We have ended up with the following two \cref{xode,yode}.
+We can solve the equations simultaneously.
+\[
+\begin{bmatrix}
+  (1 - \pi_2)(x + \pi_2r_{12}) & \pi_2(x  - r_{12} + \pi_2r_{12}) & - x\\
+  1 - \pi_2 & \pi_2 & - 1
+\end{bmatrix}
+\overbrace{\Rightarrow}^{\text{rref}}
+\begin{bmatrix}
+  1 & 0 & -1\\
+  0 & 1 & -1
+\end{bmatrix}
+\eqnumtag\label{linearsystem}
+\]
+Finally, we have that \(\frac{1}{r_1^3} = \frac{1}{r_{12}^3}\) and
+\(\frac{1}{r_2^3} = \frac{1}{r_{12}^3}\) so
+\begin{align*}
+  \frac{1}{r_1^3} & = \frac{1}{r_2^3} = \frac{1}{r_{12}^3}\\
+  r_1 & = r_2 = r_{12}.
+\end{align*}
+Recall \cref{position1,position2} which we can now rewrite with by using the
+previously obtained information: \(z = 0\), \(r_1 = r_2 = r_{12}\), and
+\(\pi_1 = 1 - \pi_2\).
+\begin{align}
+  \mathbf{r}_1
+  & = (x + \pi_2r_{12})\hat{\mathbf{i}} + y\hat{\mathbf{j}}\notag\\
+  r_1
+  & = \sqrt{(x + \pi_2r_{12})^2 + y^2}\notag\\
+  r_1^2
+  & = (x + \pi_2r_{12})^2 + y^2\notag\\
+  r_{12}^2
+  & = (x + \pi_2r_{12})^2 + y^2\label{r12one}\\
+  \mathbf{r}_2
+  & = (x - \pi_1r_{12})\hat{\mathbf{i}} + y\hat{\mathbf{j}}\notag\\
+  r_{12}^2 & = (x + \pi_2r_{12} - r_{12})^2 + y^2\label{r12two}
+\end{align}
+Next we need to set the two \cref{r12one,r12two} equal to each other. 
+However, remember that the solution to a square root involves both plus and
+minus.
+If we take the positive solution, we will end up \(r_{12} = 0\) which is
+certainly not the case.
+\begin{align} 
+  x + \pi_2r_{12} - r_{12} & = -x - \pi_2r_{12}\notag\\
+  x & = \frac{r_{12}}{2} - \pi_2r_{12}\label{xsolnsec5}
+\end{align}
+Lastly,
+\(r_{12}^2 = (x + \pi_2r_{12} - r_{12})^2 + y^2\Rightarrow y
+= \pm\frac{r_{12}\sqrt{3}}{2}\).
+We now have 2 Lagrange points, namely \(L_4\) and \(L_5\).
+\[ 
+L_4 {}:{} \Bigl(\frac{r_{12}}{2} - \pi_2r_{12}, \frac{r_{12}\sqrt{3}}{2},
+0\Bigr)
+\quad\text{and}\quad
+L_5 {}:{} \Bigl(\frac{r_{12}}{2} - \pi_2r_{12}, - \frac{r_{12}\sqrt{3}}{2},
+0\Bigr)
+\]
+Since \(r_1 = r_2 = r_{12}\), these points form 2 equilateral triangles with
+the \(m_1\) and \(m_2\).
+\begin{figure}
+  \centering
+  \includestandalone[mode = image]{lagrangepoints}
+  \caption[\(L_4\) and \(L_5\) Lagrange Points]
+  {\(L_4\) and \(L_5\) Lagrange points of a 2 body system.}
+  \label{lagrangepoints}
+\end{figure}
+To find the remaining Lagrange points, we let \(y = z = 0\).
+Then \(\mathbf{r}_1 = (x + \pi_2r_{12})\hat{\mathbf{i}}\) and
+\(\mathbf{r}_2 = (x - \pi_1r_{12})\hat{\mathbf{i}}\).
+Let \(\xi = \frac{x}{r_{12}}\).
+\begin{align*}
+  -\varOmega^2x & = -\frac{\mu_1}{r_1^3}(x + \pi_2r_{12})
+                  - \frac{\mu_2}{r_2^3}(x + \pi_2r_{12} - r_{12})\\
+  -\frac{\mu}{r_{12}^3}x & = -\frac{\mu_1}{|x + \pi_2r_{12}|^3}(x
+                           + \pi_2r_{12}) - \frac{\mu_2}{|x + \pi_2r_{12}
+                           - r_{12}|^3}(x + \pi_2r_{12} - r_{12})\\
+  0 & = \frac{\pi_1}{|x + \pi_2r_{12}|^3}(x + \pi_2r_{12}) +
+      \frac{\pi_2}{|x + \pi_2r_{12} - r_{12}|^3}(x + \pi_2r_{12} - r_{12})
+      - \frac{x}{r_{12}^3}\\
+  0 & = \frac{(1 - \pi_2)}{|x + \pi_2r_{12}|^3}(x + \pi_2r_{12})
+      + \frac{\pi_2}{|x + \pi_2r_{12} - r_{12}|^3}(x + \pi_2r_{12} - r_{12})
+      - \frac{x}{r_{12}^3}\\
+  0 & = \frac{(1 - \pi_2)}{|r_{12}\xi + \pi_2r_{12}|^3}(r_{12}\xi +
+      \pi_2r_{12}) + \frac{\pi_2}{|r_{12}\xi + \pi_2r_{12}
+      - r_{12}|^3}(r_{12}\xi + \pi_2r_{12} - r_{12}) -
+      \frac{r_{12}\xi}{r_{12}^3}\\
+  0 & = \frac{(1 - \pi_2)}{r_{12}^2|\xi + \pi_2|^3}(\xi + \pi_2)
+      + \frac{\pi_2}{r_{12}^2|\xi + \pi_2 - 1|^3}(\xi + \pi_2 - 1)
+      - \frac{\xi}{r_{12}^2}\\
+  0 & = \frac{(1 - \pi_2)}{|\xi + \pi_2|^3}(\xi + \pi_2) + \frac{\pi_2}{|\xi
+      + \pi_2 - 1|^3}(\xi + \pi_2 - 1) - \xi\\
+  f(\xi) & = \frac{(1 - \pi_2)}{|\xi + \pi_2|^3}(\xi + \pi_2)
+           + \frac{\pi_2}{|\xi + \pi_2 - 1|^3}(\xi + \pi_2 - 1) - \xi
+           \eqnumtag\label{fofxi}
+\end{align*}
+The roots of \cref{fofxi} are the Lagrange points \(L_1\), \(L_2\) and \(L_3\).
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

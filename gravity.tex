@@ -1,0 +1,313 @@
+\hypersetup{pageanchor = false}
+\chapter{Gravity}
+\label{gravity}
+
+Newton's Law of Gravitation is \(F = -\frac{Gm_1m_2}{r^2}\) and gravitational
+potential is \(\mathcal{V} = -\frac{Gm_1m_2}{r}\).
+\begin{figure}
+  \centering
+  \includestandalone[mode = image]{gravitationalpotential}
+  \caption[Gravitational Potential]
+  {The gravitational potential of two masses \(M\) and \(m\).}
+  \label{gravitationalpotential}
+\end{figure}
+\noindent
+From \cref{gravitationalpotential}, we can write the differential potential
+energy due to a differential volume, \(\ud\forall\).
+Let \(\ud v = -\frac{GMm}{r}\) and \(\ud M = \rho \ud\forall\) where \(\rho\)
+is constant.
+Then
+%% change tabbing environments (remove)
+\begin{align*}
+  V & = -\int_{\forall}\frac{GdMm}{r}\\
+    & = -Gm\int_{\forall}\frac{\rho \ud\forall}{r}\\
+    & = -Gm\iiint\frac{\rho}{r}(r')^2\sin(\theta)\ud\theta \ud\varphi\ud r'\\ 
+    & = -\rho Gm\iiint\frac{(r')^2\sin(\theta)}{r}\ud\theta \ud\varphi\ud r'
+\end{align*}
+The Law of Cosine for figure can be written as
+\(r^2 = R^2 + r'^2 - 2Rr'\cos(\theta)\) so
+\(r = \sqrt{R^2 + r'^2 - 2Rr'\cos(\theta)}\).
+Therefore, we can substitute \(r\) into our integral equation.
+\[
+V = -\rho Gm\iiint\frac{(r')^2\sin(\theta)}{\sqrt{R^2 + r'^2 -
+    2Rr'\cos(\theta)}} \ud\theta \ud\varphi \ud r'
+\eqnumtag\label{potentialV}
+\]
+where the region of integration is \(0 < r' < a\), \(0 < \theta < \pi\), and 
+\(0 < \varphi < 2\pi\).
+\begin{align} 
+  V & = -\rho Gm\iiint\frac{(r')^2\sin(\theta)}{R\sqrt{1
+      + \bigl(\frac{r'}{R}\bigr)^2 - 2\frac{r'}{R}\cos(\theta)}}\ud\theta
+      \ud\varphi \ud r'\notag\\
+    & = -2\pi\rho Gm\iint\frac{(r')^2\sin(\theta)}
+      {R\sqrt{1 + \bigl(\frac{r'}{R}
+      \bigr)^2 - 2\frac{r'}{R}\cos(\theta)}}\ud\theta \ud r'
+      \label{potentialintV}
+\end{align}
+From \cref{potentialintV}, let
+\(u = \sqrt{1 + \bigl(\frac{r'}{R}\bigr)^2 - 2\frac{r'}{R}\cos(\theta)}\) so
+\(\ud u = \frac{r'\sin(\theta)}{R\sqrt{1 + \bigl(\frac{r'}{R}\bigr)^2
+    - 2\frac{r'}{R}\cos(\theta)}}\ud\theta\).
+\[ 
+\ud\theta = \frac{R\sqrt{1 + \bigl(\frac{r'}{R}\bigr)^2
+    - 2\frac{r'}{R}\cos(\theta)}}{r'\sin(\theta)}\ud r
+\]
+Making the substitution with \(u\) and \(\ud u\), we now have
+\begin{align*}
+  V & = -2\pi\rho Gm\iint r' \ud u\ud r'\\
+    & = -2\pi\rho Gm\int r'\sqrt{1 + \Bigl(\frac{r'}{R}\Bigr)^2 -
+      2\frac{r'}{R}\cos(\theta)}\Bigr|_0^{\pi}\ud r'\\
+    & = -2\pi\rho Gm\int r'\Biggl[\sqrt{1 + \Bigl(\frac{r'}{R}\Bigr)^2 +
+      2\frac{r'}{R}} - \sqrt{1 + \Bigl(\frac{r'}{R}\Bigr)^2 -
+      2\frac{r'}{R}}\Biggr]\ud r'\\
+    & = -2\pi\rho Gm\int r'\Biggl[\sqrt{\frac{(r' + R)^2}{R^2}} -
+      \sqrt{\frac{(r' - R)^2}{R^2}}\Biggr]\ud r'\\
+    & = -\frac{2\pi\rho Gm}{R}\int r'\biggl[r' + R - \sqrt{(r' -
+      R)^2}\biggr]dr'\eqnumtag
+\end{align*}
+Since \(0 < r' < a < R\), we can write
+\(\sqrt{(r' - R)^2} = \sqrt{(R - r')^2} = R - r'\).
+\begin{align*}
+  V & = -\frac{2\pi\rho Gm}{R}\int r'\bigl[r' + R - (R - r')\bigr]\ud r'\\
+    & = -\frac{4\pi\rho Gm}{R}\int r'^2\ud r'\\
+    & = -\frac{4\pi a^3}{3}\frac{Gm\rho}{R}\eqnumtag
+\end{align*}
+The density, \(\rho\), is defined as \(\rho = \frac{M}{V}\) where the volume
+of a sphere is \(V = \frac{4\pi r^3}{3}\).
+When we make this final substitution, we have the desired result,
+\(V = -\frac{GmM}{R}\).
+
+Now let's take the general case when \(\mathbf{R} = \mathbf{x}\).
+That is, let's look at the gravitational potential for an arbitrary spheroid. 
+Then
+\[
+V(\mathbf{x}) = \frac{GMm}{x}\biggl[1 +
+  \sum_{n = 1}^{\infty}J_n\Bigl(\frac{a_0}{x}\Bigr)^nP_n(\cos\theta)\biggr]
+\eqnumtag\label{potentialspheroid}
+\]
+where \(a_0\) is the mean radius of the body \(M\), \(\theta\) is the angular
+location of \(m\), \(J_n\) is a constant (zonal harmonic), and \(P_n\) is the
+Legendre Polynomials of order "\(n\)".
+Recall that for the Law of Cosine, we had
+\(r = \sqrt{R^2 + r'^2 - 2Rr'\cos(\theta)} = R\sqrt{1 +
+  \bigl(\frac{r'}{R}\bigr)^2 - 2\frac{r'}{R}\cos(\theta)}\).
+Then we have the generating function:
+\[ 
+\frac{1}{\sqrt{1 + \bigl(\frac{r'}{R}\bigr)^2 - 2\frac{r'}{R}\cos(\theta)}}
+= \sum\limits_{n = 0}^{\infty}J_n\Bigl(\frac{a_0}{x}\Bigr)^nP_n(\cos(\theta)).
+\eqnumtag\label{generatingfunc}
+\]
+\begin{figure}
+  \centering
+  \includestandalone[mode = image]{centerofgravity}
+  \caption[Center of Gravity]
+  {Vector location of masses \(m_1\) and \(m_2\) with relation to the
+    center of gravity vector}
+  \label{centerofgravity}
+\end{figure}
+\noindent
+Let \(M\) be the total of the above system.
+Then \(\mathbf{R}_G\) is the sum of the moments divided by the total mass.
+That is,
+\[ 
+\mathbf{R}_G = \frac{\sum m_i}{M} = \frac{m_1\mathbf{R}_1
+  + m_2\mathbf{R}_2}{m_1 + m_2}.
+\label{momentsbymass}
+\]
+The velocity of the center of gravity is simply the first derivative of
+\(\mathbf{R}_G\).
+\begin{align} 
+  \mathbf{V}_G & = \dot{\mathbf{R}}_G\notag\\ 
+  & = \frac{m_1\dot{\mathbf{R}}_1 + m_2\dot{\mathbf{R}}_2}{m_1 + m_2}
+  \label{velCoG}
+\end{align}
+and then \(\mathbf{A}_G = \dot{\mathbf{V}}_G = \ddot{\mathbf{R}}_G\).
+By Newton's \(2^{\text{nd}}\) of Motion, we have that 
+\begin{align*}
+  \mathbf{F}_1 & = m_1\ddot{\mathbf{R}}_1\\
+               & = \frac{Gm_1m_2}{r_{12}^3}\mathbf{r}_{12}\\
+               & = \frac{Gm_1m_2}{r_{12}^2}\Bigl(
+                 \frac{\mathbf{r}_{12}}{r_{12}}\Bigr)\eqnumtag\\
+  \mathbf{F}_2 & = \frac{Gm_1m_2}{r_{12}^2}\Bigl(-
+                 \frac{\mathbf{r}_{12}}{r_{12}}\Bigr)\eqnumtag
+\end{align*} 
+\begin{figure}
+  \centering
+  \includestandalone[mode = image]{twobodies3D}
+  \caption[Two Bodies in 3D]{Two bodies in 3 space.}
+  \label{twobodies3D}
+\end{figure}
+\noindent
+From \cref{twobodies3D}, we know that
+\(\mathbf{r} = \mathbf{R}_2 - \mathbf{R}_1\) so
+\(\ddot{\mathbf{r}} = \ddot{\mathbf{R}}_2 - \ddot{\mathbf{R}}_1\).
+Note that
+\(m_1\ddot{\mathbf{R}}_1 = \frac{Gm_2}{r^2}m_1\bigl(\frac{\mathbf{r}}{r}\bigr)
+\Rightarrow \ddot{\mathbf{R}}_1 = \frac{Gm_2}{r^3}\mathbf{r}\).
+Using Newton's Law of Universal Gravitation, we can write
+\begin{align*}
+  \ddot{\mathbf{r}} & = -\frac{Gm_1}{r^3}\mathbf{r} -
+                      \frac{Gm_2}{r^3}\mathbf{r}\\
+                    & = -\frac{G(m_1 + m_2)}{r^3}\mathbf{r}\eqnumtag
+                      \label{rddot}
+\end{align*}
+From \cref{rddot}, let \(\mu = G(m_1 + m_2)\) be the gravitational parameter.
+In the case of a planet \(m_1\) and a spacecraft \(m_2\), \(m_2\)'s mass is
+negligible so \(\mu\approx Gm_1\).
+Now we can write the governing equation of motion:
+\[
+\ddot{\mathbf{r}} = -\frac{\mu}{r^3}\mathbf{r}
+\label{EoM}
+\]
+which is a nonlinear second order differential equation.
+Now let's look at the Conservation of Mechanical Energy of \cref{EoM}.
+\begin{align*}
+  \ddot{\mathbf{r}} + \frac{\mu}{r^3}\mathbf{r} & = 0\\
+  \dot{\mathbf{r}}\cdot\Bigl(\ddot{\mathbf{r}} +
+  \frac{\mu}{r^3}\mathbf{r}\Bigr) &= 0\\
+  \dot{\mathbf{r}}\cdot\ddot{\mathbf{r}} +
+  \frac{\mu}{r^3}\dot{\mathbf{r}}\cdot\mathbf{r} & = 0
+\end{align*}
+We claim that \(\dot{\mathbf{r}}\cdot\mathbf{r} = \dot{r}r\).
+\begin{align*}
+  \frac{\ud}{\ud t}(r^2) & = 2r\dot{r}\text{ and }
+                           \frac{d}{dt}(\mathbf{r}\cdot\mathbf{r})\\
+                         & = 2\mathbf{r}\cdot\dot{\mathbf{r}}
+\end{align*}
+Since \(r^2 = \mathbf{r}\cdot\mathbf{r}\),
+\(\dot{\mathbf{r}}\cdot\mathbf{r} = \dot{r}r\) as was needed to be shown.
+Similarly, we can show that
+\(\dot{\mathbf{r}}\cdot\ddot{\mathbf{r}} =
+\frac{1}{2}\frac{\ud}{\ud t}(\dot{r}^2)\)
+since
+\(\frac{\ud}{\ud t}(\dot{r}^2) = 2\dot{r}\ddot{r} =
+\frac{\ud}{\ud t}(\dot{\mathbf{r}}\cdot\dot{\mathbf{r}}) =
+2\ddot{\mathbf{r}}\cdot\dot{\mathbf{r}}\).
+\begin{align*}
+  \frac{\ud}{\ud t}\Bigl(\frac{1}{2}\dot{r}^2\Bigr) + \frac{\mu}{r^3}\dot{r}r
+  & = 0\\
+  \frac{\ud}{\ud t}\Bigl(\frac{1}{2}\dot{r}^2\Bigr) + \frac{\mu}{r^2}\dot{r}
+  & = 0\\
+  \frac{\ud}{\ud t}\Bigl(\frac{1}{2}\dot{r}^2\Bigr) -
+  \mu\frac{\ud}{\ud t}\Bigl(\frac{1}{r}\Bigr)
+  & = 0\\
+  \frac{\ud}{\ud t}\Bigl(\frac{1}{2}\dot{r}^2 - \mu\frac{1}{r}\Bigr)
+  & = 0\eqnumtag\label{derivmechen}
+\end{align*}
+If we integrate both sides of \cref{derivmechen}, we end up with 
+\begin{align} 
+  \frac{\dot{r}^2}{2} - \frac{\mu}{r} & = \frac{v^2}{2}
+  - \frac{\mu}{r}\notag\\[.2cm]
+  \mathcal{E} & = \frac{v^2}{2} - \frac{\mu}{r}
+  \label{energy}
+\end{align}
+where \(\mathcal{E}\) is the energy which is constant.
+\[
+\mathcal{E} =
+\begin{cases}
+  \text{a closed orbit (ellipse)}, & \text{if } \mathcal{E} < 0\\
+  \text{an open orbit (hyperbola)}, & \text{if } \mathcal{E} > 0\\
+  \text{an escape trajectory (parabola)}, & \text{if } \mathcal{E} = 0
+\end{cases}
+\eqnumtag\label{enfordifforbits}
+\]
+Now let's take the cross product of
+\(\ddot{\mathbf{r}} + \frac{\mu}{r^3}\mathbf{r} = 0\) with \(\mathbf{r}\).
+\begin{align*}
+  \ddot{\mathbf{r}} + \frac{\mu}{r^3}\mathbf{r} & = 0\\
+  \mathbf{r}\times\Bigl(\ddot{\mathbf{r}} + \frac{\mu}{r^3}\mathbf{r}\Bigr)
+                                                & = 0\\
+  \mathbf{r}\times\ddot{\mathbf{r}} + \frac{\mu}{r^3}\mathbf{r}\times\mathbf{r}
+                                                & = 0\\
+  \mathbf{r}\times\ddot{\mathbf{r}} & = 0
+\end{align*}
+Here we claim that
+\(\frac{\ud}{\ud t}(\mathbf{r}\times\dot{\mathbf{r}}) =
+\mathbf{r}\times\ddot{\mathbf{r}}\) which can be easily verified.
+Therefore, 
+\begin{align}
+  \frac{\ud}{\ud t}(\mathbf{r}\times\dot{\mathbf{r}}) & = 0\notag\\
+  \mathbf{r}\times\mathbf{v} & = \mathbf{h}
+  \label{angularmom}
+\end{align}
+where \(h\) is the angular momentum which is conserved.
+\begin{figure}
+  \centering
+  \includestandalone[mode = image]{angularmomentum}
+  \caption[Angular Momentum]{Angular momentum vector of a rotating body.}
+  \label{angularmomentum}
+\end{figure}
+\noindent
+Additionally, by the definition of the cross product, we can write 
+\(\mathbf{h} = \mathbf{r}\times\mathbf{v} = rv\sin(\theta)\hat{\mathbf{n}}\)
+or \(h = rv\sin(\theta)\). 
+\begin{laws}{Kepler's \(2^{\text{nd}}\) Law}
+  A line joining a planet and the Sun sweeps out equal areas during equal time
+  intervals (see \cref{Keplers2nd}). 
+\end{laws}
+\begin{figure}
+  \centering
+  \includestandalone[mode = image]{Keplers2nd}
+  \caption[Kepler's 2nd Law]{Equal areas being swept out in equal times.}
+  \label{Keplers2nd}
+\end{figure}
+For small time,  
+\begin{align*}
+  \ud A & \approx \frac{1}{2}bh\tag{area of a triangle}\\
+     & = \frac{1}{2}\mathbf{v}_{\perp}\mathbf{r}\ud t\\
+  \frac{\ud A}{\ud t} & = \frac{1}{2}\mathbf{v}_{\perp}\mathbf{r}\\
+        & = \frac{1}{2}rv\sin\theta\\
+        & = \frac{1}{2}\lvert\mathbf{r}\times\mathbf{v}\rvert\\
+        & = \frac{1}{2}\mathbf{h}
+\end{align*}
+Consider \(\ddot{\mathbf{r}} = -\frac{\mu}{r^3}\mathbf{r}\) crossed with
+\(\mathbf{h}\).
+\[
+\ddot{\mathbf{r}}\times\mathbf{h} = \frac{\mu}{r^3}\mathbf{h}\times\mathbf{r}
+\eqnumtag\label{rddotcrossh}
+\]
+First, let's write the LHS of \cref{rddotcrossh} as 
+\(\ddot{\mathbf{r}}\times\mathbf{h} = \ddot{\mathbf{r}}\times\mathbf{h}
++ \dot{\mathbf{r}}\times\dot{\mathbf{h}} =
+\frac{d}{dt}(\dot{\mathbf{r}}\times\mathbf{h})\).
+Next, let's write the RHS of \cref{rddotcrossh} as
+\(\mathbf{h}\times\mathbf{r} = \mathbf{r}\times\mathbf{v}\times\mathbf{r} =
+\mathbf{v}r^2 - \mathbf{r}(rv)\).
+\begin{align} 
+  \frac{\mu}{r^3}\mathbf{h}\times\mathbf{r}
+  & = \frac{\mu}{r}\mathbf{v} - \frac{v\mu}{r^2}\mathbf{r}\notag\\
+  & = \frac{\mu}{r}\dot{\mathbf{r}} - \frac{\mu\dot{r}}{r^2}\mathbf{r}\notag\\
+  & = \frac{d}{dt}\Bigl(\mu\frac{\mathbf{r}}{r}\Bigr)
+  \label{RHSasderiv}
+\end{align}
+We can now write \cref{rddotcrossh} as
+\begin{align} 
+  \frac{d}{dt}(\dot{\mathbf{r}}\times\mathbf{h})
+  & = \frac{d}{dt}\Bigl(\mu\frac{\mathbf{r}}{r}\Bigr)\notag\\
+  \dot{\mathbf{r}}\times\mathbf{h} & = \mu\frac{\mathbf{r}}{r} + \mathbf{b}
+  \label{previousintegrated}
+\end{align}
+where \(\mathbf{b}\) is a constant vector.
+Let \(\mathbf{b} = \mu\mathbf{e}\) where \(\mathbf{e}\) is the eccentricity
+vector which points in the direction of periapsis. 
+Now let's dot \(\mathbf{r}\) with the LHS of \cref{previousintegrated}.
+For the LHS, we have
+\begin{align} 
+  \mathbf{r}\cdot(\dot{\mathbf{r}}\times\mathbf{h})
+  & = \mathbf{h}\cdot(\mathbf{r}\times\dot{\mathbf{r}})\notag\\
+  & = \mathbf{h}\cdot(\mathbf{r}\times\mathbf{v})\notag\\
+  & = h^2
+  \label{momentumsquared}
+\end{align}
+Let \(\nu\) be the angle between \(\mathbf{r}\) and \(\mathbf{e}\).
+Then our equation becomes
+\begin{align*}
+  h^2 & = \mu\frac{\mathbf{r}\cdot\mathbf{r}}{r} + e\mathbf{r}\cdot\mathbf{e}\\
+      & = \mu r + \mu er\cos(\nu)\\
+  r & = \frac{h^2}{\mu(1 + e\cos(\nu))}\eqnumtag\label{trajeqn}
+\end{align*}
+which is the trajectory equation.
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

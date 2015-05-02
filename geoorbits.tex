@@ -1,0 +1,68 @@
+\hypersetup{pageanchor = false}
+\section{GEO Synchronous Earth Orbits}
+\label{geo-synchr-earth}
+
+First, we need to note the difference in a sidereal day and synodic day.
+A sidereal day is the time it takes for the Earth to rotate \(360^{\circ}\) on
+its axis, \(T = 23.93\) hours.
+A synodic day is the time it takes for the Sun to appear in the same place
+overhead, \(T = 24\) hours.
+Now, for a circular orbit, \(T = \frac{2\pi}{\mu}r^{3/2}\).
+To put a satellite in GEO around the Earth, \(T = 23.93\) hours where
+\(\mu = G(m_{\Earth} + m_{\text{satellite}})\approx \mu_{\Earth} =
+398600\frac{\text{km}^3}{\text{s}^2}\).
+Now all we need to do is solve for \(r\).
+\begin{align*} 
+  r & = \left(\frac{23.93\cdot 3600\sqrt{398600}}{2\pi}\right)^{2/3}\\
+    & = 42158.9\text{ km}
+\end{align*}
+The radius of the Earth is \(6378\) km so the altitude of a satellite in GEO
+is \(35780.9\) km.
+\begin{examples}{Elliptical Orbit}{ellipticalorbit}
+  For an elliptical orbit show that the orbital speed as a function of the true
+  anomaly is
+  \[ 
+  v = \frac{\mu}{h}\sqrt{e^2 + 2e\cos(\nu) + 1}.
+  \]
+  Plot the normalized speed \(v^* = \frac{vh}{\mu}\) as a function of the true  
+  anomaly for different eccentricities between zero and unity.
+  \smallskip
+
+  First, we need to note that \(v_r = \frac{\mu}{h}e\sin(\nu)\) and
+  \(v_{\perp} = \frac{\mu(1 + e\cos(\nu))}{h}\).
+  \par\medskip
+  \begin{minipage}{\linewidth}
+    \centering
+    \includestandalone[mode = image]{velcomp}
+    \captionof{figure}[Example Components of Velocity]
+    {Components of velocity vector example.}
+    \label{velcomp}
+  \end{minipage}
+  \par\medskip
+  By substitution, we have
+  \begin{align*} 
+    v & = \sqrt{v_r^2 + v_{\perp}^2}\\
+      & = \sqrt{\left(\frac{\mu}{h}e\sin(\nu)\right)^2 
+        + \left(\frac{\mu(1 + e\cos(\nu))}{h}\right)^2}\\
+      & = \frac{\mu}{h}\sqrt{\left(e\sin(\nu)\right)^2 + (1 + e\cos(\nu))^2}\\
+      & = \frac{\mu}{h}\sqrt{e^2(\sin^2(\nu) + \cos^2(\nu)) + 1 +
+        2e\cos(\nu)}\\
+      & = \frac{\mu}{h}\sqrt{e^2 + 2e\cos(\nu) + 1}
+  \end{align*}
+  For the plot of \(v^* = \frac{vh}{\mu} = \sqrt{e^2 + 2e\cos(\nu) + 1}\),
+  see   \cref{velocityprofiles}.
+  \par\medskip
+  \begin{minipage}{\linewidth}
+    \centering
+    \includegraphics[width = 3.5in, height = 3.5in, trim = 40bp 20bp 45bp 35bp,
+    clip]{example1notes}
+    \captionof{figure}[Velocity Profiles]
+    {Velocity profiles for \(\nu\in [0,2\pi]\) and \(e\in[0,1]\).}
+    \label{velocityprofiles}
+  \end{minipage}
+\end{examples}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

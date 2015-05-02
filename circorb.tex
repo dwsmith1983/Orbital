@@ -1,0 +1,25 @@
+\hypersetup{pageanchor = false}
+\section{Circular Orbit}
+\label{circular}
+
+For \(e = 0\), \cref{orbitalintegral} becomes
+\begin{align}
+  \frac{\mu^2}{h^3}\int_0^t\ud t' & = \int_0^{\nu}\ud\nu'\notag\\
+  \frac{\mu^2}{h^3}t & = \nu\label{orbintcirc}.
+\end{align}
+Solving for \(t\) in \cref{orbintcirc}, we have \(t = \frac{h^3\nu}{\mu^2}\).
+For a circular orbit, \(r = \frac{h^2}{\mu}\).
+Then \(r^{3/2} = \frac{h^3}{\mu^{3/2}}\).
+Now we can solve for \(h\) and substitute into \(t\).
+\[
+t = \frac{r^{3/2}\nu}{\sqrt{\mu}}
+\]
+By Kepler's \(3^{\text{rd}}\) Law, if \(\nu = 2\pi\), then \(t = T\), the
+orbital period.
+Therefore, \(t = \frac{\nu}{2\pi}T\) so \(\nu = 2\pi\frac{t}{T}\).
+Let \(2\pi\frac{t}{T} = nt\) where \(n\) is the mean motion.
+Then \(\nu(t) = nt\).
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

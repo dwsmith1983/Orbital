@@ -1,0 +1,33 @@
+\hypersetup{pageanchor = false}
+\section{Lagrange Points for the Earth-Moon System}
+\label{lagr-points-earth}
+
+\begin{examples}{Lagrange Points \(L_1\), \(L_2\), and \(L_3\)}{lagrangepoints}
+  Refer to the Python file example5notes.py for the calculation of \(L_1\),
+  \(L_2\), and \(L_3\).
+  See \cref{numericallyfindlagrangepoints} for a plot of the \(f(\xi)\).
+  \par\smallskip
+  \begin{minipage}{\linewidth}
+    \centering
+    \includegraphics[width = 3.5in, height = 3.5in, trim = 30bp 30bp 30bp 35bp,
+    clip]{example5notes}
+    \captionof{figure}[Lagrange Points \(1\), \(2\), and \(3\)]
+    {The \(\xi\) intercepts of \(f(\xi)\).}
+    \label{numericallyfindlagrangepoints}
+  \end{minipage}
+  \par\smallskip
+  To find \(L_1\), \(L_2\), and \(L_3\) of the Earth-Moon system, we simply
+  multiple \(\xi\) times \(r_{12}\).
+  \begin{align*} 
+    L_1 & = 0.8369\cdot r_{12}\\
+        & = 321709.713544\\
+    L_2 & = 1.15568\cdot r_{12}\\
+        & = 444244.584579\\
+    L_3 & = -1.005062\cdot r_{12}\\
+        & = -386346.120068
+  \end{align*}
+\end{examples}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

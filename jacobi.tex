@@ -1,0 +1,153 @@
+\hypersetup{pageanchor = false}
+\section{Jacobi Constant} 
+\label{jacobi-constant}
+
+In order to find the Jacobi constant, we need to turn back to our our original
+system of ODEs:
+\begin{align}
+  \ddot{x} - 2\varOmega\dot{y} - \varOmega^2x
+  & =   -\frac{\mu_1}{r_1^3}(x + \pi_2r_{12}) -
+    \frac{\mu_2}{r_2^3}(x - \pi_1r_{12})\label{xjacobi}\\
+  \ddot{y} + 2\varOmega\dot{x} - \varOmega^2y
+  & =   -\frac{\mu_1}{r_1^3}y - \frac{\mu_2}{r_2^3}y\label{yjacobi}\\
+  \ddot{z} & = -\frac{\mu_1}{r_1^3}z - \frac{\mu_2}{r_2^3}z\label{zjacobi}
+\end{align}
+Let's multiple \cref{xjacobi} by \(\dot{x}\), \cref{yjacobi} by \(\dot{y}\), and \cref{zjacobi} by \(\dot{z}\).
+\begin{align}
+  \dot{x}\ddot{x} - 2\varOmega\dot{x}\dot{y} - \varOmega^2\dot{x}x
+  & = -\dot{x}\frac{\mu_1}{r_1^3}(x + \pi_2r_{12}) -
+    \dot{x}\frac{\mu_2}{r_2^3}(x - \pi_1r_{12})\label{x2jacobi}\\
+  \dot{y}\ddot{y} + 2\varOmega\dot{y}\dot{x} - \varOmega^2\dot{y}y
+  & = -\frac{\mu_1}{r_1^3}\dot{y}y - \frac{\mu_2}{r_2^3}\dot{y}y
+    \label{y2jacobi}\\
+  \dot{z}\ddot{z}
+  & = -\frac{\mu_1}{r_1^3}\dot{z}z - \frac{\mu_2}{r_2^3}\dot{z}z
+    \label{z2jacobi}
+\end{align}
+Now we can add the \cref{x2jacobi,y2jacobi,z2jacobi} together.
+\begin{align*}
+  \dot{x}\ddot{x} + \dot{y}\ddot{y} + \dot{z}\ddot{z} -
+  \varOmega^2(\dot{x}\ddot{x} + \dot{y}\ddot{y})
+  & = -\Bigl(\frac{\mu_1}{r_1^3} + \frac{\mu_2}{r_2^3}\Bigr)(\dot{x}x +
+    \dot{y}y + \dot{z}z) + \Bigl(\frac{\pi_1\mu_2}{r_2^3}
+    - \frac{\pi_2\mu_1}{r_1^3}\Bigr)r_{12}\dot{x}\\
+  \frac{1}{2}\frac{d}{dt}(v^2) - \frac{1}{2}\varOmega^2\frac{d}{dt}(r^2)
+  & =  -\frac{\mu_1}{r_1^3}[(x + \pi_2r_{12})\dot{x} + \dot{y}y + \dot{z}z]
+    - \frac{\mu_2}{r_2^3}[(x - \pi_1r_{12})\dot{x} + \dot{y}y + \dot{z}z]\\
+  \frac{d}{dt}\Bigl[\frac{v^2}{2} - \frac{1}{2}\varOmega^2r^2
+  - \frac{\mu_1}{r_1} - \frac{\mu_2}{r_2}\Bigr]
+  & = 0\\
+  \frac{v^2}{2} - \frac{1}{2}\varOmega^2r^2 - \frac{\mu_1}{r_1}
+  - \frac{\mu_2}{r_2}
+  & = C\\
+  v^2
+  & = \varOmega^2r^2 + \frac{2\mu_1}{r_1} + \frac{2\mu_2}{r_2} + 2C
+\end{align*}
+where
+\begin{align*}
+  r^2 & = x^2 + y^2\\
+  \dot{r}r & = \dot{x}x + \dot{y}y\\
+  r_1^2 & = (x + \pi_2r_{12})^2 + y^2 + z^2\\
+  \dot{r}_1
+      & =  \frac{1}{r_1}\Bigl[\dot{x}(x + \pi_2r_{12}) + \dot{y}y
+        + \dot{z}z\Bigr]\\
+  r_2^2 & = (x - \pi_1r_{12})^2 + y^2 + z^2\\
+  \dot{r}_2
+      & =  \frac{1}{r_2}\Bigl[\dot{x}(x - \pi_1r_{12}) + \dot{y}y
+        + \dot{z}z\Bigr]
+\end{align*}
+Since \(v^2 \geq 0\),
+\(\varOmega^2r^2 + \frac{2\mu_1}{r_1} + \frac{2\mu_2}{r_2} + 2C \geq 0\) too.
+When \(\varOmega^2r^2 + \frac{2\mu_1}{r_1} + \frac{2\mu_2}{r_2} + 2C = 0\), we
+have zero velocity surfaces.
+\begin{examples}{Lagrange Point \(L_4\)}{lagrangepointl4}
+  Using a scientific software package, develop a computer program to compute
+  the trajectory of a spacecraft using the restricted three-body equations of
+  motion.
+  Use this program to design a trajectory from Earth to the Earth-Moon Lagrange
+  point \(L_4\) starting at a 200km altitude burnout point.
+  The mission design requirement is that the trajectory should take the
+  coasting  spacecraft to within 500km of \(L_4\) with a relative speed of no
+  more than \(1\) km/s.
+  \par\smallskip
+  \begin{minipage}{\linewidth}
+    \centering
+    \includestandalone[mode = image]{earthmoonl4}
+    \captionof{figure}[Mission to \(L_4\)]{Mission to Earth-Moon \(L_4\)
+      point.}
+    \label{earthmoonl4}
+  \end{minipage}
+  \par\smallskip
+  First, we need to determine the location of \(L_4\).
+  Since \(L_4\) is lying in the the \(xy\)-plane, the \(z\)-coordinate is 0.
+  The center of gravity is located 1707km inside the Earth.
+  Therefore, the center of Earth is at \((-4671,0,0)\) km.
+  To find the \(y\)-coordinate, we have
+  \(\frac{\sqrt{3}}{2}384400 = 332900.1652\) km.
+  Using Pythagoras's Theorem, \(x = \sqrt{384400^2 - 332900^2}\approx 187529\)
+  km.
+  That is, \(L_4\) is at \((187529, 332900, 0)\).
+  With this information, we can find Jacobi's constant
+  \begin{align*}
+    \varOmega^2(x_{L_4}^2 + y_{L_4}^2) + \frac{2\mu_1}{r_1} +
+    \frac{2\mu_2}{r_2} + 2C & < 1\\
+    C & < -1.06824
+  \end{align*}
+  where
+  \(\varOmega = \sqrt{\frac{6.67259\times 10^{-20}(m_{\text{e}} +          
+      m_{\text{m}})}{r_{12}}}\),
+  \(\mu_1 = 6.67259\times 10^{-20}m_{\text{e}}\),   
+  \(\mu_2 = 6.67259\times 10^{-20}m_{\text{m}}\), and
+  \(r_1 = r_2 = r_{12} = 384400\).
+  To arrive at \(L_4\) with a relative speed of 0, \(C = -1.56824\).
+  Since the true anomaly wasn't specified, I let \(\nu = -\frac{\pi}{4}\).
+  So the position of the spacecrafts burnout will be
+  \(\mathbf{r}_s = \langle -19.3098,-4651.35,0\rangle\).
+  For our trajectory, let \(C = -1.21\).
+  At this location and this instance, our velocity will be \(v_{b_o}\).
+  \begin{align*}
+  v_{b_o} & = \sqrt{\varOmega^2(x^2 + y^2) + \frac{2\mu_1}{\sqrt{(x
+            + \pi_2r_{12})^2 + y^2}} + \frac{2\mu_2}{\sqrt{(x - \pi_2r_{12})^2
+            + y^2}} + 2(-1.21)}\\
+          & = 10.8994415375\text{ km}/\text{s}
+  \end{align*}
+  where \(x\) and \(y\) are the components of \(\mathbf{r}_s\).
+  Let the flight path angle be \(\gamma = -14.02^{\circ}\).
+  The \(x\) and \(y\) components on \(\mathbf{v}_{0}\) are
+  \begin{align*}
+    v_x & = v_{b_o}(\sin\gamma\cos\nu - \sin\nu\cos\gamma)\\
+        & = 7.76974\\
+    v_y & = v_{b_o}(\sin\gamma\sin\nu + \cos\nu\cos\gamma)\\
+        & = 7.64389
+  \end{align*}
+  Then we can write \(\mathbf{v}_0 = \langle 7.76974,7.64389,0\rangle\).
+  \par\smallskip
+  \begin{minipage}{\linewidth}
+    \centering
+    \includegraphics[width = 3.5in, height = 3.5in, trim = 20bp 20bp 55bp 40bp,
+    clip]{example6notes}
+    \captionof{figure}[Simulation to \(L_4\)]
+    {Flight path with the given conditions to \(L_4\) of the Earth-Moon
+      system.}
+    \label{launchtol4earthmoon}
+  \end{minipage}
+  \par\smallskip
+  At the position \(\langle 187529.4904, 332900.6847, 0\rangle\), the
+  associated   velocity vector is \(\langle 0.6428, -0.5506, 0\rangle\).
+  That is, the speed at this location is
+  \[
+  \sqrt{0.6428^2 + 0.5506^2} = 0.846455944534\text{ km}/\text{s} <
+  1\text{ km}/\text{s},
+  \]
+  and the distance from \(L_4\) is
+  \begin{align*}
+    \sqrt{(187529.4904 - 187529)^2 + (332900.6847 - 332900)^2}
+    & = 0.846455944534\text{ km}\\
+    & < 500\text{ km}.
+  \end{align*}
+  For the exact calculations, see example6notes.py.
+\end{examples}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

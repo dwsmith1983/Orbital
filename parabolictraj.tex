@@ -1,0 +1,56 @@
+\hypersetup{pageanchor = false}
+\chapter{Parabolic Trajectories}
+\label{parab-traj}
+
+A parabolic orbit is when the eccentricity, \(e = 1\), and \(\mathcal{E} = 0\).
+Since we are dealing with a parabola, we can relate the directrix with the
+semi-latus rectum, \(p\), and \(r_p\).
+That is, \(r_p = \frac{p}{2}\Rightarrow p = 2r_p\).
+Since \(\mathcal{E} = 0 = \frac{v^2}{2} - \frac{\mu}{r}\),
+\(v = \sqrt{\frac{2\mu}{r}}\) which is the speed of a parabolic path.
+\begin{figure}
+  \centering
+  \includestandalone[mode = image]{geometryparabola}
+  \caption[Geometry of a Parabola]{The geometry of a parabolic trajectory.}
+  \label{geometryparabola}
+\end{figure}
+\noindent
+For a parabolic trajectory, we can write the flight angle as:
+\[
+\tan\gamma = \frac{\sin\nu}{1 + \cos\nu}.\eqnumtag
+\label{flightpathangleparabola}
+\]
+Using the following identities, we can simplify the right hand side of \cref{flightpathangleparabola}.
+\begin{align} 
+  \sin(2\theta) & = 2\sin(\theta)\cos(\theta)\\
+  \cos(2\theta) & = 2\cos^2(\theta) - 1
+  \label{doubleangle}
+\end{align}
+That is, \(\tan\gamma = \tan\frac{\nu}{2}\) so \(\gamma = \frac{\nu}{2}\).
+\begin{examples}{Parabolic Trajectory}{parabolictrajectory}
+  What minimum velocity, relative to the Earth, is required to escape the solar  
+  system along a parabolic path from Earth orbit?
+  \par\medskip
+  \begin{minipage}{\linewidth}
+    \centering
+    \includestandalone[mode = image]{parabolictrajearth}
+    \captionof{figure}[Parabolic Trajectory-Earth]
+    {A parabolic trajectory from Earth.}
+    \label{parabolictrajearth}
+  \end{minipage}
+  \par\medskip
+  The velocity of the Earth is
+  \(v_{\Earth} = \sqrt{\frac{\mu_{\Sun}}{2a_{\Earth}}} = 29.784\) km/s where
+  \(\mu_{\Sun} = 132712440018\) and \(a_{\Earth} = 149.6\times 10^6\).
+  Now \(v_{\text{esc}} = \sqrt{2}v_{\Earth} = 42.1212\) km/s.
+  \begin{align*} 
+    v_{\text{esc}} & = v_{\text{rel}} + v_{\Earth}\\
+    v_{\text{rel}} & = v_{\text{esc}} - v_{\Earth}\\
+    & = 42.1212 - 29.784\\
+    & = 12.337\text{km}/\text{s}
+  \end{align*}
+\end{examples}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

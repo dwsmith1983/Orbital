@@ -1,0 +1,144 @@
+\hypersetup{pageanchor = false}
+\chapter{Elliptical Orbit}
+\label{elliptical-orbit}
+
+Elliptical orbits are orbits in which the functional form is
+\(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\) or can be written as a vector valued
+function of the form
+\(\mathbf{r}(t) = a\cos(t)\mathbf{i} + b\sin(t)\mathbf{j}\).
+\begin{enumerate}[label = \arabic*.]
+\item
+  Conservation of Mechanic Energy:
+  \(\mathcal{E} = \dfrac{v^2}{2} - \dfrac{\mu}{r} < 0\)
+\item
+  Conservation of Angular Momentum:
+  \(\mathbf{h} = \mathbf{r}\times\mathbf{v}\)
+\item
+  The Trajectory Equation: \(r = \dfrac{h^2}{\mu(1 + e\cos(\nu))}\)
+\end{enumerate}
+\begin{figure}
+  \centering
+  \includestandalone[mode = image]{geometryellipse}
+  \caption[Geometry of an Ellipse]{The geometry of an ellipse.}
+  \label{geometryellipse}
+\end{figure}
+From the \cref{geometryellipse}, we that 
+\begin{enumerate}[resume*]
+\item
+  \(p\) is the semi-latus rectum,
+\item
+  the distance from the focus to \(a\) is \(r_p\) (radius at periapsis),
+\item
+  the distance from the origin to \(c\) is \(ae\) where \(e\) is the
+  eccentricity, and
+\item
+  \(0 < e = 1 - \frac{c}{a} < 1\).
+\end{enumerate}
+We can then write \(r = \frac{p}{1 + e\cos(\nu)}\) and \(p = a(1 - e^2)\).
+Moreover, \(p = \frac{h^2}{\mu}\).
+At periapsis, \(\nu = 0\), and at apoapsis, \(\nu = \pi\) so
+\begin{align}
+  r_p & = \frac{p}{1 + e} = a(1 - e)\\
+  r_a & = \frac{p}{1 - e} = a(1 + e).\label{rpra}
+\end{align}
+Now we can take the ratio of \(r_p\) and \(r_a\).
+\begin{align} 
+  \frac{r_p}{r_a} & = \frac{1 - e}{1 + e}\notag\\
+  e & = \frac{r_a - r_p}{r_a + r_p}\label{eccinrpra}
+\end{align}
+Let's examine the specific energy at periapsis.
+Then \(v = v_p\) and \(r = r_p\).
+Recall that \(h = rv\sin\theta\).
+At periapsis, the angle between \(r\) and \(v\) is \(\theta = \frac{\pi}{2}\)
+so \(h = rv_p\Rightarrow v_p = \frac{h}{r_p}\).
+Now we can write the specific energy as 
+\begin{align*}
+  \mathcal{E} & = \frac{v^2}{2} - \frac{\mu}{r}\\
+              & = \frac{v_p^2}{2} - \frac{\mu}{r_p}\\
+              & = \frac{h^2}{2r_p^2} -
+                \frac{\mu}{r_p}\eqnumtag\label{energyatrp}
+\end{align*}
+Using \cref{energyatrp} and the relation that \(p = \frac{h^2}{\mu}\) at periapsis, we have \(h^2 = pu\) but \(p = a(1 - e^2)\) so
+\(h^2 = a(1 - e^2)u\).
+\begin{align*}
+  \mathcal{E} & = \frac{h^2}{2r_p^2} - \frac{\mu}{r_p}\\
+              & = \frac{a(1 - e^2)\mu}{2a^2(1 - e)^2} -
+                \frac{\mu}{a(1 - e)}\\
+              & = \frac{(1 - e^2)\mu - 2\mu(1 - e)}{2a(1 - e)^2}\\
+              & = \frac{\mu(1 + e - 2)}{2a(1 - e)}\\
+              & = \frac{\mu(e - 1)}{2a(1 - e)}\\
+              & = -\frac{\mu}{2a}\eqnumtag\label{energyform2}
+\end{align*}
+Recall \cref{previousintegrated}.
+Then \(\mu\mathbf{e} = (\dot{\mathbf{r}}\times\mathbf{h})
+- \mu\frac{\mathbf{r}}{r}\).
+\begin{align*}
+  \mu\mathbf{e} & = \dot{\mathbf{r}}\times\mathbf{h} -
+                  \mu\frac{\mathbf{r}}{r}\\
+                & = \dot{\mathbf{r}}\times\mathbf{r}\times\dot{\mathbf{r}}
+                  - \mu\frac{\mathbf{r}}{r}\\
+                & = v^2\mathbf{r} - (rv)\mathbf{v} - \mu\frac{\mathbf{r}}{r}\\
+                & = \left(v^2 - \frac{\mu}{r}\right)\mathbf{r} - (rv)\mathbf{v}
+                  \eqnumtag\label{eccenvec}
+\end{align*}
+At this point in the notes, given \(\mathbf{r}\) and \(\mathbf{v}\), we are able to find
+\begin{enumerate}[label = \Roman*.] 
+\item
+  \(\mathcal{E} = \frac{v^2}{2} - \frac{\mu}{r} = -\frac{\mu}{2a}\)
+\item
+  \(\mathbf{e} = \frac{1}{\mu}\left[\left(v^2 - \frac{\mu}{r}\right)\mathbf{r}
+    - (rv)\mathbf{v}\right]\) and \(e = \lVert\mathbf{e}\rVert\).
+\item
+  \(p = a(1 - e^2)\Rightarrow r = \frac{p}{1 + e\cos\nu}\) so we can also find
+  the true anomaly \(\nu\).
+\item
+  \(\mathbf{h} = \mathbf{r}\times\mathbf{v}\)
+\end{enumerate}
+\begin{figure}
+  \centering
+  \includestandalone[mode = image]{componentsvelocity}
+  \caption[Components of Velocity]
+  {The components of the velocity vector \(\mathbf{v}\) consist of the
+    perpendicular and the parallel velocities.}
+  \label{componentsvelocity}
+\end{figure}
+\noindent
+In the diagram above,
+\(\lVert\mathbf{v}_r\rVert = \lVert\mathbf{v}_{\parallel}\rVert\).
+\begin{alignat*}{4}
+  v_{\perp} & = \frac{h}{r} &\quad & v_r &&{} = \dot{r}\\
+  & = \frac{\mu}{h}(1 + e\cos(\nu)) &\quad &
+  &&{} = \frac{d}{dt}\left[\frac{h^2}{\mu(1 + e\cos(\nu))}\right]\\
+  & & & &&{} = -\frac{h^2e\dot{\nu}\sin(\nu)}{\mu(1 + e\cos(\nu))^2}\\
+  & & & &&{} = -\frac{h}{r^2}\frac{h^2e\sin(\nu)}{\mu(1 + e\cos(\nu))^2}\\
+  & & & &&{} = -\frac{\mu^2(1 + e\cos(\nu))^2}{h^4}
+  \frac{h^3e\sin(\nu)}{\mu(1 + e\cos(\nu))^2}\\
+  & & & &&{} = \frac{\mu e\sin(\nu)}{h}
+\end{alignat*}
+We were able to make the substitution \(\dot{\nu} = \frac{h}{r^2}\).
+Let \(\omega\) be the angular velocity.
+Then \(\omega = r\frac{d\nu}{d t} = r\dot{\nu}\).
+\(\omega\) is related to the tangential velocity, \(v_{\perp}\), by
+\(v_{\perp} = r\dot{\nu}\).
+\[ 
+\tan(\gamma)  = \frac{v_r}{v_{\perp}} = \frac{e\sin(\nu)}{1 + e\cos(\nu)}
+\eqnumtag\label{flightpath}
+\]
+Recall that \(\frac{dA}{dt} = \frac{1}{2}h\) and let \(T\) be the period of
+the ellipse where \(A_0\) be the total area of the ellipse.
+\begin{align} 
+  \int_0^T \ud t & = \frac{2}{h}\int_0^{A_0}\ud A\notag\\
+  T & = \frac{2A_0}{h}\label{periodellipinarea}
+\end{align}
+The area of an ellipse is \(A_0 = \pi ab\) and \(b = a\sqrt{1 - e^2}\).
+Recall \(\frac{h^2}{\mu} = a(1 - e^2)\Rightarrow h = \sqrt{\mu a(1 - e^2)}\).
+So the period of an ellipse is
+\begin{align} 
+  T & = \frac{2\pi a^2\sqrt{1 - e^2}}{\sqrt{\mu a(1 - e^2)}}\notag\\ 
+  & = \frac{2\pi}{\sqrt{\mu}}a^{3/2}.\label{periodellip}
+\end{align}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
